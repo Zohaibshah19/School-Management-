@@ -5,6 +5,7 @@ use App\Http\Controllers\teacherController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AttendenceController;
+use App\Http\Controllers\FeeController;
 
 
 
@@ -43,4 +44,9 @@ Route::resource('class','ClassController');
 Route::resource('students','StudentController');
 Route::resource('courses','CoursesController');
 Route::resource('attendences','AttendenceController');
+Route::resource('fees','FeeController');
 
+
+//Route::get('/fees', 'FeeController@index');
+
+Route::get('/search','FeeController@search');

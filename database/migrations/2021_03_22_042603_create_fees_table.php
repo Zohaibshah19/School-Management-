@@ -16,7 +16,12 @@ class CreateFeesTable extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->string('amount');
+            $table->string('day');
             $table->string('month');
+            $table->string('year');
+
+           // $table->unique( array('month','year') );
+
             $table->unsignedBigInteger('student_id');
 
             $table->timestamps();

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendence extends Model
 {
-        protected $fillable = ['student_id'];
+        protected $fillable = ['date','isPresent'];
 
 //         public function student(){
 //             return $this->belongsTo(Student::class);
@@ -14,11 +14,24 @@ class Attendence extends Model
 
 
 
-        public function students(){
-             return $this->belongsToMany(Student::class,'teachercourses')->withTimestamps();
+        // public function students(){
+        //      return $this->belongsTo(Student::class,'teachercourses')->withTimestamps();
+        // }
+
+        // public function students(){
+        //     return $this->belongsToMany(Student::class,'studentattendence');
+        // }
+    
+        // public function latestStatus() {
+        //     return $this->students()->latest();
+        // }
+
+
+        public function students()
+        {
+            $this->BelongsTo('App\Student');
         }
 
-        public function latestStatus() {
-            return $this->students()->latest();
-        }
- }
+
+         //public $timestamps = false;
+    }

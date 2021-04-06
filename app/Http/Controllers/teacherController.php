@@ -86,10 +86,10 @@ class teacherController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         
-        //$data->class= $request->class;
+        $data->class= $request->class;
         
         //$data->classTeacher()->save($classTeacher);
-        $data->classTeacher()->save($request->class_id);
+        //$data->classTeacher()->save($request->class_id);
         
 
         $data->phone = $request->phone;

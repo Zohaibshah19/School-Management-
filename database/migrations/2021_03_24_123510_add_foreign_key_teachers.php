@@ -15,7 +15,7 @@ class AddForeignKeyTeachers extends Migration
     {
         Schema::table('class', function (Blueprint $table) 
         {
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+           // $table->foreign('teacher_id')->references('id')->on('teachers');
         });
     }
 

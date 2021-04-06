@@ -15,10 +15,14 @@ class CreateAttendencesTable extends Migration
     {
         Schema::create('attendences', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
+            $table->date('date')->useCurrent()->nullable();
+            $table->boolean('isPresent');
+            // $table->unsignedBigInteger('student_id');
             $table->timestamps();
+            // $table->unsignedBigInteger('student_id');
 
-            $table->foreign('student_id')->references('id')->on('students');
+            // $table->foreign('student_id')->references('id')->on('students');
+            
         });
     }
 

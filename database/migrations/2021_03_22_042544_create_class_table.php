@@ -19,13 +19,13 @@ class CreateClassTable extends Migration
             $table->string('section');
             
             //$table->string('teacher_name');
-            $table->unsignedBigInteger('teacher_id');
+          //  $table->unsignedBigInteger('teacher_id');
             $table->timestamps();
 
-            $table->foreign('teacher_id')->references('id')->on('teachers');
+            //$table->foreign('teacher_id')->references('id')->on('teachers');
 
         });
-        
+
     }
 
     /**

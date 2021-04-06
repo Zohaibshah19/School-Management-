@@ -276,6 +276,15 @@
                   <p>Attendence</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="{{route('fees.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Fees</p>
+                </a>
+              </li>
+
+
             </ul>
           </li>
           <!-- <li class="nav-item">

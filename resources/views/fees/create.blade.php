@@ -1,4 +1,15 @@
 
+
+
+
+
+
+
+
+
+
+
+
 @extends('layouts.admin')
 @section('content')
 
@@ -8,7 +19,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add Class</h1>
+            <h1>Pay Fees</h1>
           </div>
           
         </div>
@@ -18,13 +29,18 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
+      <div class="container-fluid ">
         <!-- SELECT2 EXAMPLE -->
-        <form action="{{route('class.store')}}" method="POST" enctype="multipart/form-data">
+
+        <form action="{{ route('fees.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
+
+           
+
+            <input name="student_id" type="hidden" value={{$student_id}} />
         <div class="card card-default">
           <div class="card-header">
-            <h3 class="card-title">Add Class</h3>
+            <h3 class="card-title">Add Fees</h3>
 
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -42,36 +58,41 @@
               <div class="col-md-6">
 
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Class">
-                    @error('name')
+                    <label for="name">Amount</label>
+                    <input type="text" class="form-control" name="amount" id="amount" placeholder="Amount">
+                    @error('amount')
                     <p style="color:red">{{$message}}</p>
                     @enderror
                   </div>
 
 
+                  <div class="form-group">
+                    <label for="father_name">Day</label>
+                    <input type="text" class="form-control" name="day" id="day" placeholder="Day">
+                    @error('day')
+                    <p style="color:red">{{$message}}</p>
+                    @enderror
+                  </div>
+
                 <div class="form-group">
-                  <label for="section"> Section </label>
-                  <input type="text" class="form-control" name="section" id="email" placeholder="Enter Section">
-                  @error('section')
+                  <label for="email"> Month</label>
+                  <input type="text" class="form-control" name="month" id="month" placeholder="Month">
+                  @error('month')
                   <p style="color:red">{{$message}}</p>
                   @enderror
                 </div>
 
-            
-                <label>Select Teacher</label>
-                  <select class="form-control select2" style="width: 100%;" name='teacher_id'>
-                    @foreach($data as $item)
-                    <option  id='teacher_id' value="{{$item->id}}">{{$item->name}}</option>
-                    <span style="color:red">@error('teacher_id'){{$message}}@enderror</span>
-                    @endforeach
-           
-                  </select> 
-
               
 
+                <div class="form-group">
+                  <label for="class"> Year</label>
+                  <input type="text" class="form-control" name="year" id="year" placeholder="Year">
+                  @error('year')
+                  <p style="color:red">{{$message}}</p>
+                  @enderror
+                </div>
 
-               
+              
               </div>
               <!-- /.col -->
              
@@ -106,14 +127,3 @@
 
 
 @endsection
-
-
-
-
-
-
-
-
-
-
-

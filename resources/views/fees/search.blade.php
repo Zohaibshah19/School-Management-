@@ -8,13 +8,6 @@
 
 
 
-
-
-
-
-
-
-
 @extends('layouts.admin')
 @section('content')
 
@@ -26,7 +19,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Classes</h1>
+            <h1>Students Payment History</h1>
        
           </div>
          
@@ -54,46 +47,74 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Classes</h3>
-                <a href="{{route('class.create')}}" style="max-width: 150px; float: right; display: inline-block" class="btn btn-block btn-success">Add Class</a>
+                <div class="input-group">
+  
+  
+                
+
+</div>
+
+
+
+
+
+
+<div>
+        <div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ url('/search') }}" method="GET" role="search">
+
+                    <div class="input-group">
+                        <span class="input-group-btn mr-5 mt-1">
+                            <button class="btn btn-info" type="submit" >
+                                <span class="fas fa-search"></span>
+                            </button>
+                        </span>
+                        <input type="text" class="form-control mr-2" name="query" placeholder="Search" id="query">
+                       
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button" title="Refresh page">
+                                    <span class="fas fa-sync-alt"></span>
+                                </button>
+                            </span>
+                   
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
               </div>
+              
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="categories" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Class</th>
-                    <th>Section</th>
-                    <th>Class Teacher ID</th>
-                    
-                    <th>View / Edit / Delete</th>
+                    <th>Student Name</th>
+                    <th>Payment Day</th>
+                    <th>Payment Month</th>
+                    <th>Payment Year</th>
+                    <th>Payment Amount</th>
 
 
                   </tr>
                   </thead>
-                  @if($class)
+           
                   <tbody>
-                    @foreach($class as $clas)
+                    @foreach($fe as $fee)
                   <tr>
-    
+                  <td class="align-middle">{{$fee->students->name}}</td>
 
-                    <td class="align-middle">{{$clas->name}}</td>
-                    <td class="align-middle">{{$clas->section}} </td>
-
-                    <td class="align-middle">{{ collect($clas->teacher)->implode('name', ",") }}</td>                   
+                    <td class="align-middle">{{$fee->day}}</td>
+                    <td class="align-middle">{{$fee->month}}</td>
+                    <td class="align-middle">{{$fee->year}}</td>
+                    <td class="align-middle">{{$fee->amount}}</td>
                    
-                    <td class='align-middle'>
-      <form action="{{route('class.destroy',$clas->id)}}" method="POST">
-        <a href="{{route('class.show',$clas->id)}}" class="fa fa-eye"></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a href="{{route('class.edit',$clas->id )}}" class="fa fa-edit"></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="fa fa-trash" onclick="return confirm('Are You Sure to DELETE the selected data')"></button>
 
-        
-
-        </form>
  
  
 
@@ -105,15 +126,11 @@
                 </table>
 
 
-<br> 
-<div class='d-flex'>
+<br>                  <div class='d-flex'>
 <div class='mx-auto'>
-{{ $class->links('pagination::bootstrap-4') }}
 </div>
 </div>
-
-             
-             @endif </div>
+              </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -127,5 +144,4 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection

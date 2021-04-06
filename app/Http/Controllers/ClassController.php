@@ -15,6 +15,7 @@ class ClassController extends Controller
      */
     public function index()
     {
+        
         $class = Clas::latest()->paginate(10);
         return view('class.index',compact('class'))->with('i',(request()->input('page',1) - 1 ) * 4);
         
@@ -69,7 +70,7 @@ class ClassController extends Controller
 
 
 
-        $data->teacher_id = $request->teacher_id;
+        //$data->teacher_id = $request->teacher_id;
         $data->name = $request->name;
         
 

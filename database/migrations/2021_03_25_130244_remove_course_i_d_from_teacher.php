@@ -16,7 +16,7 @@ class RemoveCourseIDFromTeacher extends Migration
         Schema::table('teachers', function (Blueprint $table) {
                   
             //$table->dropForeign('course_id');
-            $table->dropColumn('course_id');   
+          //  $table->dropColumn('course_id');   
 
         });
     }

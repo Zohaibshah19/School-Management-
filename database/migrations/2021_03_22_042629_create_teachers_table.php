@@ -22,7 +22,7 @@ class CreateTeachersTable extends Migration
             $table->string('dob');
             $table->string('image');
 
-            $table->unsignedBigInteger('course_id');
+            //$table->unsignedBigInteger('course_id');
             $table->timestamps();
 
            // $table->foreign('course_id')->references('id')->on('teachers');
@@ -40,9 +40,9 @@ class CreateTeachersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('teachers');  
-        Schema::table('teachers', function($table) {
-            $table->unsignedInteger('course_id')->nullable();
-            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-        });
+        // Schema::table('teachers', function($table) {
+        //     $table->unsignedInteger('course_id')->nullable();
+        //     $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+        // });
     }
 }

@@ -19,7 +19,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Teachers</h1>
+            <h1>Fees</h1>
        
           </div>
          
@@ -47,65 +47,44 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Teachers</h3>
-                <a href="{{route('teachers.create')}}" style="max-width: 150px; float: right; display: inline-block" class="btn btn-block btn-success">Add Teachers</a>
+                <h3 class="card-title">Fees</h3>
+                <a href="{{url('fees/show')}}" style  ="max-width: 150px; float: right; display: inline-block" class="btn btn-block btn-success">View Fees Details</a>
+
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="categories" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Email</th>
+                    <th>Student Name</th>
+                    <th>Father Name</th>
                     <th>Class</th>
-                    <th>Phone</th>
-                    <th>DoB</th>
-                    <th>Course(s)</th>
 
-                    <th>View / Edit / Delete</th>
+                    <th>Pay Fees</th>
 
 
                   </tr>
                   </thead>
-
                   <tbody>
-                  
-                    @foreach($teachers as $teacher)
-                    
+                  @foreach($data as $fee)
                   <tr>
-    <td class="align-middle"><img src="{{ asset('uploads/'.$teacher->image ) }}" class="img-thumbnail" style="width:80px"></td>
-
-                    <td class="align-middle">{{$teacher->name}}</td>
-                    <td class="align-middle">{{$teacher->email}} </td>
-                    <td class="align-middle">{{$teacher->class}} </td>
-                    
-
-                   
-                    
-                   
-                    <td class="align-middle">{{$teacher->phone}} </td>
-                    <td class="align-middle">{{$teacher->dob}} </td>
-      
-                   <td class="align-middle">{{ collect($teacher->latestStatus)->implode('name', ",") }}</td>
 
 
-                    <td class='align-middle'>
-      <form action="{{route('teachers.destroy',$teacher->id)}}" method="POST">
-        <a href="{{route('teachers.show',$teacher->id)}}" class="fa fa-eye"></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        <a href="{{route('teachers.edit',$teacher->id )}}" class="fa fa-edit  "></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-        
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="fa fa-trash" onclick="return confirm('Are You Sure to DELETE the selected data')"></button>
-        
+
+                  <td id='student_id' value="{{$fee->id}}">{{$fee->name}}</td>
+                  <td id='student_id' value="{{$fee->id}}">{{$fee->father_name}}</td>
+
+                  <td id='student_id' value="{{$fee->id}}">{{$fee->class}}</td>
+                  
+                  
+                  
+                  <td>
+        <a href="{{route('fees.create',['student_id'=>$fee->id])}}" class="btn btn-primary">Pay Fees</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
         
 
-        </form>
+
  
- 
-
-      </td>
                   </tr>
                 @endforeach
                   </tbody>
@@ -115,7 +94,6 @@
 
 <br>                  <div class='d-flex'>
 <div class='mx-auto'>
-{{ $teachers->links('pagination::bootstrap-4') }}
 </div>
 </div>
               </div>
